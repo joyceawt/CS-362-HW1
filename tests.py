@@ -597,7 +597,7 @@ class TestCreditCardValidator(unittest.TestCase):
 
     def test_invalid_mastercard_checksum_5(self):
         """
-        This checks invalid checksums for mastercards with valid prefix and 
+        This checks invalid checksums for mastercards with valid prefix and
         valid length.
         """
         self.assertFalse(credit_card_validator('5534567890123432'))
