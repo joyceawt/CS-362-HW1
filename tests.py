@@ -6,14 +6,14 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_invalid_0_digit(self):
         """
         Given that a min of 10 digits is required for a valid credit card, this
-        ensures that not having an input returns as false. An empty value is 
+        ensures that not having an input returns as false. An empty value is
         a common test for invalid numbers.
         """
         self.assertFalse(credit_card_validator(''))
 
     def test_invalid_1_digit(self):
         """
-        This tests that credit card numbers with a valid visa prefix 
+        This tests that credit card numbers with a valid visa prefix
         but invalid length and checksums are flagged as invalid credit cards.
         """
         self.assertFalse(credit_card_validator('4'))
@@ -51,7 +51,7 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_invalid_2_digit_5(self):
         """
         This tests the boundary of mastercard prefix given that only 51-55
-        are acceptable. It also tests invalid length and checksums are not 
+        are acceptable. It also tests invalid length and checksums are not
         allowed.
         """
         self.assertFalse(credit_card_validator('50'))
@@ -97,14 +97,14 @@ class TestCreditCardValidator(unittest.TestCase):
 
     def test_invalid_9_digit(self):
         """
-        This tests that credit cards with 9 digits, right outside the boundary 
+        This tests that credit cards with 9 digits, right outside the boundary
         of 10-19 digits but with correct checksums are invalid.
         """
         self.assertFalse(credit_card_validator('326151040'))
 
     def test_invalid_10_digit(self):
         """
-        This tests that credit cards with 10 digits with a valid checksum but 
+        This tests that credit cards with 10 digits with a valid checksum but
         invalid prefix and length is flagged as invalid. 10 was chosen as its
         the beginning of the range 10-19.
         """
@@ -113,7 +113,7 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_invalid_10_digit_2(self):
         """
         This tests that credit cards with 10 digits with a valid AMEX prefix
-        but invalid checksum and length is flagged as invalid. 10 was chosen as 
+        but invalid checksum and length is flagged as invalid. 10 was chosen as
         its the beginning of the range 10-19.
         """
         self.assertFalse(credit_card_validator('3761510448'))
@@ -425,7 +425,7 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_invalid_visa_length_4(self):
         """
         This tests that cards with valid VISA prefixes but incorrect
-        checksum and lengths are flagged as invalid. The cc number is 
+        checksum and lengths are flagged as invalid. The cc number is
         too long and goes above 16 digits.
         """
         self.assertFalse(credit_card_validator('49884388438843052'))
@@ -569,7 +569,7 @@ class TestCreditCardValidator(unittest.TestCase):
 
     def test_invalid_mastercard_checksum(self):
         """
-        This checks invalid checksums for mastercards with valid prefix and 
+        This checks invalid checksums for mastercards with valid prefix and
         valid length.
         """
         self.assertFalse(credit_card_validator('5134567890123462'))
