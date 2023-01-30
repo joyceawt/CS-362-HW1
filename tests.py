@@ -357,10 +357,10 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertFalse(credit_card_validator('27195678901234634'))
 
     def test_valid_mastercard_1(self):
-        self.assertTrue(credit_card_validator('513456789012345'))
+        self.assertTrue(credit_card_validator('5134567890123454'))
 
     def test_valid_mastercard_2(self):
-        self.assertTrue(credit_card_validator('523456789012343'))
+        self.assertTrue(credit_card_validator('5234567890123438'))
 
     def test_valid_mastercard_3(self):
         self.assertTrue(credit_card_validator('5300800050018000'))
@@ -369,7 +369,7 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertTrue(credit_card_validator('5400800050018009'))
 
     def test_valid_mastercard_5(self):
-        self.assertTrue(credit_card_validator('553456789012346'))
+        self.assertTrue(credit_card_validator('5534567890123468'))
 
     def test_valid_mastercard_6(self):
         self.assertTrue(credit_card_validator('2221000900180042'))
