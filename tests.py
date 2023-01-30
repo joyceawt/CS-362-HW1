@@ -156,8 +156,12 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertFalse(credit_card_validator('2220080005001807'))
 
     def test_invalid_mastercard_length(self):
-        # valid prefix and checksum but invalid length
+        # valid prefix and checksum but invalid length (too long)
         self.assertFalse(credit_card_validator('56008000500180074'))
+
+    def test_invalid_mastercard_length_2(self):
+        # valid prefix and checksum but invalid length (too short)
+        self.assertFalse(credit_card_validator('560080005001874'))
 
     def test_valid_mastercard_1(self):
         self.assertTrue(credit_card_validator('513456789012345'))
@@ -178,7 +182,16 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertTrue(credit_card_validator('2221000900180042'))
 
     def test_valid_mastercard_7(self):
+        self.assertTrue(credit_card_validator('2222000900180041'))
+
+    def test_valid_mastercard_8(self):
+        self.assertTrue(credit_card_validator('2250987654321026'))
+
+    def test_valid_mastercard_9(self):
         self.assertTrue(credit_card_validator('2720007000260018'))
+
+    def test_valid_mastercard_10(self):
+        self.assertTrue(credit_card_validator('2719234567890127'))
 
 
 if __name__ == '__main__':
