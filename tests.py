@@ -88,25 +88,40 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertFalse(credit_card_validator('49003001172256730444'))
 
     def test_valid_amex_test_card(self):
+        # https://support.bluesnap.com/docs/test-credit-card-numbers
         self.assertTrue(credit_card_validator('374245455400126'))
 
     def test_valid_amex_test_card_2(self):
+        # https://docs.adyen.com/development-resources/testing/test-card-numbers#american-express-amex
         self.assertTrue(credit_card_validator('370000000100018'))
 
-    def test_invalid_amex_prefix_1(self):
-        self.assertFalse(credit_card_validator('370000000100013'))
-
-    def test_valid_amex_prefix_2(self):
+    def test_valid_amex_prefix(self):
+        # testing a valid card with correct prefix, length and checksum
         self.assertTrue(credit_card_validator('340000000100007'))
 
+    def test_invalid_amex_prefix_1(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('380000000100013'))
+
     def test_invalid_amex_prefix_2(self):
-        self.assertFalse(credit_card_validator('340000000100013'))
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('350000000100012'))
+
+    def test_invalid_amex_prefix_3(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('360000000100010'))
+
+    def test_invalid_amex_prefix_4(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('320000000100019'))
 
     def test_invalid_amex_length(self):
-        self.assertFalse(credit_card_validator('3400000001000071'))
+        # too long
+        self.assertFalse(credit_card_validator('3400000001000074'))
 
     def test_invalid_amex_length_2(self):
-        self.assertFalse(credit_card_validator('3700000000000020'))
+        # too short
+        self.assertFalse(credit_card_validator('37000000000007'))
 
     def test_valid_visa_test_card_1(self):
         self.assertTrue(credit_card_validator('4111111145551142'))
