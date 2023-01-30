@@ -3,6 +3,18 @@ from credit_card_validator import credit_card_validator
 
 
 class TestCreditCardValidator(unittest.TestCase):
+    def test_invalid_0_digit(self):
+        self.assertFalse(credit_card_validator(''))
+
+    def test_invalid_1_digit(self):
+        self.assertFalse(credit_card_validator('4'))
+
+    def test_invalid_2_digit(self):
+        self.assertFalse(credit_card_validator('34'))
+
+    def test_invalid_2_digit_2(self):
+        self.assertFalse(credit_card_validator('37'))
+
     def test_invalid_9_digit(self):
         # invalid length but valid checksum
         self.assertFalse(credit_card_validator('376151049'))
