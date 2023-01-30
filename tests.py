@@ -74,46 +74,56 @@ class TestCreditCardValidator(unittest.TestCase):
         # Test valid check sum but invalid length
         self.assertFalse(credit_card_validator('326151040'))
 
-    def test_valid_10_digit(self):
-        # Test valid check sum but invalid length
-        self.assertTrue(credit_card_validator('3661510440'))
-
     def test_invalid_10_digit(self):
+        # Test valid check sum but invalid prefix and invalid length
+        self.assertFalse(credit_card_validator('3661510440'))
+
+    def test_invalid_10_digit_2(self):
         # Test AMEX prefix with invalid checksum and length
         self.assertFalse(credit_card_validator('3761510448'))
 
-    def test_invalid_10_digit_2(self):
+    def test_invalid_10_digit_3(self):
         # Test valid invalid check sum but valid length
         self.assertFalse(credit_card_validator('3161510445'))
 
-    def test_valid_11_digit(self):
-        self.assertTrue(credit_card_validator('31455071568'))
-
     def test_invalid_11_digit(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('31455071568'))
+
+    def test_invalid_11_digit_2(self):
+        # valid length but invalid prefix and checksum
         self.assertFalse(credit_card_validator('31455071566'))
 
-    def test_valid_12_digit(self):
-        self.assertTrue(credit_card_validator('334256427868'))
-
     def test_invalid_12_digit(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('334256427868'))
+
+    def test_invalid_12_digit_2(self):
+        # valid length but invalid prefix and checksum
         self.assertFalse(credit_card_validator('334256427865'))
 
-    def test_valid_13_digit(self):
-        self.assertTrue(credit_card_validator('1690512642015'))
-
     def test_invalid_13_digit(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('1690512642015'))
+
+    def test_invalid_13_digit_2(self):
+        # valid length but invalid prefix and checksum
         self.assertFalse(credit_card_validator('1690512642012'))
 
-    def test_valid_14_digit(self):
-        self.assertTrue(credit_card_validator('71566889496372'))
-
     def test_invalid_14_digit(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('71566889496372'))
+
+    def test_invalid_14_digit_2(self):
+        # valid length but invalid prefix and checksum
         self.assertFalse(credit_card_validator('71566889496371'))
 
-    def test_valid_15_digit(self):
-        self.assertTrue(credit_card_validator('683074087568241'))
-
     def test_invalid_15_digit(self):
+        # valid length and checksum but invalid prefix
+        self.assertFalse(credit_card_validator('683074087568241'))
+
+    def test_invalid_15_digit_2(self):
+        # valid length but invalid prefix and checksum
         self.assertFalse(credit_card_validator('683074087568240'))
 
     def test_valid_16_digit(self):
@@ -124,22 +134,28 @@ class TestCreditCardValidator(unittest.TestCase):
         # not master of visa, just pure length
         self.assertFalse(credit_card_validator('9723233384426542'))
 
-    def test_valid_17_digit(self):
-        self.assertTrue(credit_card_validator('99055597294275368'))
-
     def test_invalid_17_digit(self):
+        # invalid prefix with valid checksum and length
+        self.assertFalse(credit_card_validator('99055597294275368'))
+
+    def test_invalid_17_digit_2(self):
+        # invalid prefix with valid length and invalid checksum
         self.assertFalse(credit_card_validator('99055597294275364'))
 
-    def test_valid_18_digit(self):
-        self.assertTrue(credit_card_validator('730946709430106547'))
-
     def test_invalid_18_digit(self):
+        # invalid prefix with valid checksum and length
+        self.assertFalse(credit_card_validator('730946709430106547'))
+
+    def test_invalid_18_digit_2(self):
+        # invalid prefix and invalid checksum with valid length
         self.assertFalse(credit_card_validator('730946709430106542'))
 
-    def test_valid_19_digit(self):
-        self.assertTrue(credit_card_validator('7718953209133728422'))
-
     def test_invalid_19_digit(self):
+        # invalid prefix with valid length and valid checksum
+        self.assertFalse(credit_card_validator('7718953209133728422'))
+
+    def test_invalid_19_digit_2(self):
+        # invalid prefix and invalid checksum with valid length
         self.assertFalse(credit_card_validator('7718953209133728421'))
 
     def test_invalid_exceed_length(self):
@@ -318,27 +334,27 @@ class TestCreditCardValidator(unittest.TestCase):
 
     def test_invalid_mastercard_checksum(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('513456789012346'))
+        self.assertFalse(credit_card_validator('513456789012346'))
 
     def test_invalid_mastercard_checksum_2(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('523456789012346'))
+        self.assertFalse(credit_card_validator('523456789012346'))
 
     def test_invalid_mastercard_checksum_3(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('2221567890123463'))
+        self.assertFalse(credit_card_validator('2221567890123463'))
 
     def test_invalid_mastercard_checksum_4(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('27205678901234639'))
+        self.assertFalse(credit_card_validator('27205678901234639'))
 
     def test_invalid_mastercard_checksum_5(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('553456789012346'))
+        self.assertFalse(credit_card_validator('553456789012343'))
 
     def test_invalid_mastercard_checksum_6(self):
         # valid prefix and length but invalid checksum
-        self.assertTrue(credit_card_validator('27195678901234634'))
+        self.assertFalse(credit_card_validator('27195678901234634'))
 
     def test_valid_mastercard_1(self):
         self.assertTrue(credit_card_validator('513456789012345'))
